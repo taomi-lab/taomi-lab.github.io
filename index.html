@@ -1,2 +1,1206 @@
-<p>我是李梦涛，这是我的个人网站。 </p>
-<p>很高兴你来到这里, 你可以在以下的网站找到我</p>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>张教授 - 个人主页</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#165DFF',
+            secondary: '#36CBCB',
+            accent: '#FF7D00',
+            dark: '#2A3B4C',
+            light: '#F5F7FA',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            serif: ['Merriweather', 'Georgia', 'serif'],
+          },
+        },
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .text-balance {
+        text-wrap: balance;
+      }
+      .hover-lift {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .hover-lift:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+      .timeline-item {
+        position: relative;
+        padding-left: 2rem;
+        margin-bottom: 1.5rem;
+      }
+      .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0.25rem;
+        width: 0.75rem;
+        height: 0.75rem;
+        border-radius: 50%;
+        background-color: #165DFF;
+      }
+      .timeline-item::after {
+        content: '';
+        position: absolute;
+        left: 0.375rem;
+        top: 1.5rem;
+        bottom: -1.5rem;
+        width: 0.0625rem;
+        background-color: #E5E7EB;
+      }
+      .timeline-item:last-child::after {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body class="bg-light text-dark font-sans">
+  <!-- 导航栏 -->
+  <header id="navbar" class="fixed w-full bg-white/95 backdrop-blur-sm shadow-sm z-50 transition-all duration-300">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <a href="#" class="text-2xl font-bold text-primary flex items-center">
+        <i class="fa fa-graduation-cap mr-2"></i>
+        <span>张教授</span>
+      </a>
+      
+      <!-- 桌面导航 -->
+      <nav class="hidden md:flex space-x-8">
+        <a href="#about" class="text-dark hover:text-primary transition-colors font-medium">关于我</a>
+        <a href="#research" class="text-dark hover:text-primary transition-colors font-medium">研究方向</a>
+        <a href="#publications" class="text-dark hover:text-primary transition-colors font-medium">发表论文</a>
+        <a href="#teaching" class="text-dark hover:text-primary transition-colors font-medium">教学工作</a>
+        <a href="#students" class="text-dark hover:text-primary transition-colors font-medium">学生情况</a>
+        <a href="#contact" class="text-dark hover:text-primary transition-colors font-medium">联系方式</a>
+      </nav>
+      
+      <!-- 移动端菜单按钮 -->
+      <button id="menu-toggle" class="md:hidden text-dark hover:text-primary">
+        <i class="fa fa-bars text-xl"></i>
+      </button>
+    </div>
+    
+    <!-- 移动端导航菜单 -->
+    <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg absolute w-full">
+      <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
+        <a href="#about" class="text-dark hover:text-primary transition-colors font-medium py-2">关于我</a>
+        <a href="#research" class="text-dark hover:text-primary transition-colors font-medium py-2">研究方向</a>
+        <a href="#publications" class="text-dark hover:text-primary transition-colors font-medium py-2">发表论文</a>
+        <a href="#teaching" class="text-dark hover:text-primary transition-colors font-medium py-2">教学工作</a>
+        <a href="#students" class="text-dark hover:text-primary transition-colors font-medium py-2">学生情况</a>
+        <a href="#contact" class="text-dark hover:text-primary transition-colors font-medium py-2">联系方式</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 英雄区域 -->
+  <section class="pt-24 pb-12 md:pt-32 md:pb-20 bg-gradient-to-b from-primary/5 to-light">
+    <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+      <div class="md:w-1/3 mb-8 md:mb-0">
+        <div class="relative">
+          <div class="w-64 h-64 md:w-72 md:h-72 mx-auto rounded-full overflow-hidden border-4 border-white shadow-xl">
+            <img src="https://picsum.photos/400/400?random=1" alt="张教授照片" class="w-full h-full object-cover">
+          </div>
+          <div class="absolute -bottom-4 -right-4 bg-accent text-white rounded-full p-3 shadow-lg">
+            <i class="fa fa-university text-2xl"></i>
+          </div>
+        </div>
+      </div>
+      <div class="md:w-2/3 text-center md:text-left">
+        <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold text-dark mb-2">
+          张教授
+        </h1>
+        <p class="text-[clamp(1.2rem,3vw,1.8rem)] text-primary font-medium mb-4">
+          计算机科学与技术学院教授，博士生导师
+        </p>
+        <p class="text-gray-600 max-w-2xl mx-auto md:mx-0 text-lg mb-6 text-balance">
+          主要研究方向包括人工智能、机器学习、数据挖掘与知识工程。主持多项国家级科研项目，在国内外重要期刊和会议发表论文80余篇。
+        </p>
+        <div class="flex flex-wrap justify-center md:justify-start gap-4">
+          <a href="#contact" class="bg-primary hover:bg-primary/90 text-white font-medium py-3 px-6 rounded-lg shadow-md hover:shadow-lg transition-all hover-lift">
+            <i class="fa fa-envelope-o mr-2"></i>联系我
+          </a>
+          <a href="#" class="bg-white hover:bg-gray-50 text-primary font-medium py-3 px-6 rounded-lg shadow-md hover:shadow-lg transition-all border border-primary/20 hover-lift">
+            <i class="fa fa-download mr-2"></i>下载简历
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 关于我 -->
+  <section id="about" class="py-16 md:py-24 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-dark mb-4">关于我</h2>
+        <div class="w-24 h-1 bg-primary mx-auto"></div>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div class="space-y-6">
+          <p class="text-gray-700 leading-relaxed">
+            我于2005年获得清华大学计算机科学博士学位，随后加入北京大学计算机科学与技术学院任教至今。目前担任人工智能研究所所长，同时也是国家重点实验室的核心成员。
+          </p>
+          <p class="text-gray-700 leading-relaxed">
+            我的研究主要聚焦于人工智能基础理论与应用，特别关注机器学习算法设计、知识表示与推理、以及智能系统开发。近年来，我致力于将人工智能技术应用于医疗健康、智慧城市和教育等领域。
+          </p>
+          <p class="text-gray-700 leading-relaxed">
+            我曾获国家自然科学二等奖（2018）、教育部自然科学一等奖（2016）和IEEE Fellow（2020）。目前主持国家重点研发计划项目"新一代人工智能基础理论与关键技术"。
+          </p>
+          
+          <div class="grid grid-cols-2 gap-4 mt-8">
+            <div class="bg-light p-4 rounded-lg">
+              <p class="text-primary font-bold text-3xl mb-1">15+</p>
+              <p class="text-gray-600">年教学经验</p>
+            </div>
+            <div class="bg-light p-4 rounded-lg">
+              <p class="text-primary font-bold text-3xl mb-1">80+</p>
+              <p class="text-gray-600">发表论文</p>
+            </div>
+            <div class="bg-light p-4 rounded-lg">
+              <p class="text-primary font-bold text-3xl mb-1">25+</p>
+              <p class="text-gray-600">毕业研究生</p>
+            </div>
+            <div class="bg-light p-4 rounded-lg">
+              <p class="text-primary font-bold text-3xl mb-1">5+</p>
+              <p class="text-gray-600">国家级项目</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="space-y-8">
+          <div class="timeline-item">
+            <h3 class="text-lg font-semibold mb-1">2015 - 至今</h3>
+            <p class="text-gray-700">北京大学计算机科学与技术学院教授，博士生导师</p>
+          </div>
+          <div class="timeline-item">
+            <h3 class="text-lg font-semibold mb-1">2010 - 2015</h3>
+            <p class="text-gray-700">北京大学计算机科学与技术学院副教授</p>
+          </div>
+          <div class="timeline-item">
+            <h3 class="text-lg font-semibold mb-1">2007 - 2010</h3>
+            <p class="text-gray-700">清华大学计算机系博士后</p>
+          </div>
+          <div class="timeline-item">
+            <h3 class="text-lg font-semibold mb-1">2000 - 2005</h3>
+            <p class="text-gray-700">清华大学计算机科学博士</p>
+          </div>
+          <div class="timeline-item">
+            <h3 class="text-lg font-semibold mb-1">1996 - 2000</h3>
+            <p class="text-gray-700">北京大学计算机科学学士</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 研究方向 -->
+  <section id="research" class="py-16 md:py-24 bg-light">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-dark mb-4">研究方向</h2>
+        <div class="w-24 h-1 bg-primary mx-auto"></div>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- 研究方向1 -->
+        <div class="bg-white rounded-xl shadow-md p-6 hover-lift">
+          <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+            <i class="fa fa-brain text-2xl text-primary"></i>
+          </div>
+          <h3 class="text-xl font-bold text-dark mb-3">人工智能基础理论</h3>
+          <p class="text-gray-600 mb-4">
+            研究机器学习、深度学习的理论基础，包括模型可解释性、泛化能力分析和对抗鲁棒性等。
+          </p>
+          <ul class="space-y-2 mb-6">
+            <li class="flex items-start">
+              <i class="fa fa-check text-primary mt-1 mr-2"></i>
+              <span class="text-gray-700">可解释人工智能</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fa fa-check text-primary mt-1 mr-2"></i>
+              <span class="text-gray-700">模型压缩与加速</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fa fa-check text-primary mt-1 mr-2"></i>
+              <span class="text-gray-700">对抗学习与防御</span>
+            </li>
+          </ul>
+          <a href="#" class="text-primary hover:text-primary/80 font-medium flex items-center">
+            查看更多 <i class="fa fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+        
+        <!-- 研究方向2 -->
+        <div class="bg-white rounded-xl shadow-md p-6 hover-lift">
+          <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+            <i class="fa fa-database text-2xl text-primary"></i>
+          </div>
+          <h3 class="text-xl font-bold text-dark mb-3">数据挖掘与知识工程</h3>
+          <p class="text-gray-600 mb-4">
+            研究从大规模数据中发现有价值信息的方法，以及知识表示、推理和融合的理论与技术。
+          </p>
+          <ul class="space-y-2 mb-6">
+            <li class="flex items-start">
+              <i class="fa fa-check text-primary mt-1 mr-2"></i>
+              <span class="text-gray-700">知识图谱构建与应用</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fa fa-check text-primary mt-1 mr-2"></i>
+              <span class="text-gray-700">社会网络分析</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fa fa-check text-primary mt-1 mr-2"></i>
+              <span class="text-gray-700">时空数据挖掘</span>
+            </li>
+          </ul>
+          <a href="#" class="text-primary hover:text-primary/80 font-medium flex items-center">
+            查看更多 <i class="fa fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+        
+        <!-- 研究方向3 -->
+        <div class="bg-white rounded-xl shadow-md p-6 hover-lift">
+          <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+            <i class="fa fa-heartbeat text-2xl text-primary"></i>
+          </div>
+          <h3 class="text-xl font-bold text-dark mb-3">人工智能应用</h3>
+          <p class="text-gray-600 mb-4">
+            研究人工智能在医疗健康、智慧城市、教育等领域的应用，推动人工智能技术的实际落地。
+          </p>
+          <ul class="space-y-2 mb-6">
+            <li class="flex items-start">
+              <i class="fa fa-check text-primary mt-1 mr-2"></i>
+              <span class="text-gray-700">医疗影像分析</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fa fa-check text-primary mt-1 mr-2"></i>
+              <span class="text-gray-700">智慧城市管理</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fa fa-check text-primary mt-1 mr-2"></i>
+              <span class="text-gray-700">智能教育系统</span>
+            </li>
+          </ul>
+          <a href="#" class="text-primary hover:text-primary/80 font-medium flex items-center">
+            查看更多 <i class="fa fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+      </div>
+      
+      <!-- 研究项目 -->
+      <div class="mt-20">
+        <h3 class="text-2xl font-bold text-dark mb-8 text-center">主持科研项目</h3>
+        
+        <div class="space-y-6">
+          <div class="bg-white rounded-xl shadow-md p-6 hover-lift">
+            <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+              <h4 class="text-xl font-bold text-dark">国家重点研发计划项目：新一代人工智能基础理论与关键技术</h4>
+              <span class="bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-medium mt-2 md:mt-0">2021-2025</span>
+            </div>
+            <p class="text-gray-600 mb-4">
+              本项目聚焦于人工智能基础理论与关键技术研究，旨在突破现有深度学习模型的局限性，发展可解释、鲁棒、安全的新一代人工智能技术。
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="bg-light text-gray-700 px-3 py-1 rounded-full text-sm">人工智能</span>
+              <span class="bg-light text-gray-700 px-3 py-1 rounded-full text-sm">机器学习</span>
+              <span class="bg-light text-gray-700 px-3 py-1 rounded-full text-sm">可解释性</span>
+            </div>
+          </div>
+          
+          <div class="bg-white rounded-xl shadow-md p-6 hover-lift">
+            <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+              <h4 class="text-xl font-bold text-dark">国家自然科学基金重点项目：面向复杂场景的多模态知识图谱构建与应用</h4>
+              <span class="bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-medium mt-2 md:mt-0">2019-2023</span>
+            </div>
+            <p class="text-gray-600 mb-4">
+              本项目研究如何从多模态数据中构建知识图谱，并探索其在智能问答、推荐系统等领域的应用，重点解决多模态信息融合与知识推理的关键问题。
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="bg-light text-gray-700 px-3 py-1 rounded-full text-sm">知识图谱</span>
+              <span class="bg-light text-gray-700 px-3 py-1 rounded-full text-sm">多模态学习</span>
+              <span class="bg-light text-gray-700 px-3 py-1 rounded-full text-sm">知识推理</span>
+            </div>
+          </div>
+          
+          <div class="bg-white rounded-xl shadow-md p-6 hover-lift">
+            <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+              <h4 class="text-xl font-bold text-dark">科技部科技创新2030重大项目：人工智能驱动的医疗健康技术研究</h4>
+              <span class="bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-medium mt-2 md:mt-0">2018-2022</span>
+            </div>
+            <p class="text-gray-600 mb-4">
+              本项目致力于将人工智能技术应用于医疗健康领域，研发基于医学影像和电子病历的智能诊断系统，提高疾病早期筛查和诊断的准确性。
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="bg-light text-gray-700 px-3 py-1 rounded-full text-sm">医疗AI</span>
+              <span class="bg-light text-gray-700 px-3 py-1 rounded-full text-sm">医学影像分析</span>
+              <span class="bg-light text-gray-700 px-3 py-1 rounded-full text-sm">智能诊断</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 发表论文 -->
+  <section id="publications" class="py-16 md:py-24 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-dark mb-4">发表论文</h2>
+        <div class="w-24 h-1 bg-primary mx-auto"></div>
+      </div>
+      
+      <!-- 论文筛选 -->
+      <div class="flex flex-wrap justify-center gap-4 mb-12">
+        <button class="px-6 py-2 rounded-full bg-primary text-white font-medium">全部</button>
+        <button class="px-6 py-2 rounded-full bg-light hover:bg-gray-100 text-dark font-medium transition-colors">期刊论文</button>
+        <button class="px-6 py-2 rounded-full bg-light hover:bg-gray-100 text-dark font-medium transition-colors">会议论文</button>
+        <button class="px-6 py-2 rounded-full bg-light hover:bg-gray-100 text-dark font-medium transition-colors">专著章节</button>
+        <button class="px-6 py-2 rounded-full bg-light hover:bg-gray-100 text-dark font-medium transition-colors">技术报告</button>
+      </div>
+      
+      <!-- 论文列表 -->
+      <div class="space-y-8">
+        <div class="bg-light rounded-xl p-6 hover-lift">
+          <div class="flex flex-col md:flex-row md:items-center justify-between mb-3">
+            <h3 class="text-xl font-bold text-dark">Interpretable Machine Learning: A Survey of Methods and Applications</h3>
+            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium">2023</span>
+          </div>
+          <p class="text-gray-700 mb-2">
+            Zhang, J., Wang, L., & Li, H. (2023). *ACM Computing Surveys*, 55(3), 1-38.
+          </p>
+          <p class="text-gray-600 mb-4">
+            This comprehensive survey reviews the state-of-the-art methods for interpretable machine learning, including global and local explanation techniques, and their applications in various domains.
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <a href="#" class="text-primary hover:text-primary/80 font-medium flex items-center">
+              <i class="fa fa-file-pdf-o mr-1"></i> PDF
+            </a>
+            <a href="#" class="text-primary hover:text-primary/80 font-medium flex items-center">
+              <i class="fa fa-database mr-1"></i> 数据集
+            </a>
+            <a href="#" class="text-primary hover:text-primary/80 font-medium flex items-center">
+              <i class="fa fa-code mr-1"></i> 代码
+            </a>
+            <a href="#" class="text-primary hover:text-primary/80 font-medium flex items-center">
+              <i class="fa fa-quote-right mr-1"></i> 引用
+            </a>
+          </div>
+        </div>
+        
+        <div class="bg-light rounded-xl p-6 hover-lift">
+          <div class="flex flex-col md:flex-row md:items-center justify-between mb-3">
+            <h3 class="text-xl font-bold text-dark">Knowledge Graph Embedding: A Survey of Approaches and Applications</h3>
+            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium">2022</span>
+          </div>
+          <p class="text-gray-700 mb-2">
+            Wang, L., Zhang, J., & Chen, S. (2022). *IEEE Transactions on Knowledge and Data Engineering*, 34(12), 5823-5844.
+          </p>
+          <p class="text-gray-600 mb-4">
+            This paper provides a comprehensive review of knowledge graph embedding techniques, including translation-based, semantic-based, and neural network-based methods, and their applications in various AI tasks.
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <a href="#" class="text-primary hover:text-primary/80 font-medium flex items-center">
+              <i class="fa fa-file-pdf-o mr-1"></i> PDF
+            </a>
+            <a href="#" class="text-primary hover:text-primary/80 font-medium flex items-center">
+              <i class="fa fa-database mr-1"></i> 数据集
+            </a>
+            <a href="#" class="text-primary hover:text-primary/80 font-medium flex items-center">
+              <i class="fa fa-code mr-1"></i> 代码
+            </a>
+            <a href="#" class="text-primary hover:text-primary/80 font-medium flex items-center">
+              <i class="fa fa-quote-right mr-1"></i> 引用
+            </a>
+          </div>
+        </div>
+        
+        <div class="bg-light rounded-xl p-6 hover-lift">
+          <div class="flex flex-col md:flex-row md:items-center justify-between mb-3">
+            <h3 class="text-xl font-bold text-dark">Adversarial Robustness of Deep Learning Models: A Survey</h3>
+            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium">2021</span>
+          </div>
+          <p class="text-gray-700 mb-2">
+            Li, H., Zhang, J., & Wang, L. (2021). *Journal of Artificial Intelligence Research*, 72, 1001-1050.
+          </p>
+          <p class="text-gray-600 mb-4">
+            This survey systematically reviews the recent advances in adversarial robustness of deep learning models, including attack methods, defense strategies, and theoretical analysis.
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <a href="#" class="text-primary hover:text-primary/80 font-medium flex items-center">
+              <i class="fa fa-file-pdf-o mr-1"></i> PDF
+            </a>
+            <a href="#" class="text-primary hover:text-primary/80 font-medium flex items-center">
+              <i class="fa fa-database mr-1"></i> 数据集
+            </a>
+            <a href="#" class="text-primary hover:text-primary/80 font-medium flex items-center">
+              <i class="fa fa-code mr-1"></i> 代码
+            </a>
+            <a href="#" class="text-primary hover:text-primary/80 font-medium flex items-center">
+              <i class="fa fa-quote-right mr-1"></i> 引用
+            </a>
+          </div>
+        </div>
+        
+        <div class="bg-light rounded-xl p-6 hover-lift">
+          <div class="flex flex-col md:flex-row md:items-center justify-between mb-3">
+            <h3 class="text-xl font-bold text-dark">Multi-modal Knowledge Graph Embedding for Complex Question Answering</h3>
+            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium">2020</span>
+          </div>
+          <p class="text-gray-700 mb-2">
+            Chen, S., Zhang, J., & Wang, L. (2020). *Proceedings of the 29th ACM International Conference on Information and Knowledge Management (CIKM)*, 123-132.
+          </p>
+          <p class="text-gray-600 mb-4">
+            This paper proposes a novel multi-modal knowledge graph embedding method that integrates text, images, and structured knowledge for answering complex questions that require cross-modal reasoning.
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <a href="#" class="text-primary hover:text-primary/80 font-medium flex items-center">
+              <i class="fa fa-file-pdf-o mr-1"></i> PDF
+            </a>
+            <a href="#" class="text-primary hover:text-primary/80 font-medium flex items-center">
+              <i class="fa fa-database mr-1"></i> 数据集
+            </a>
+            <a href="#" class="text-primary hover:text-primary/80 font-medium flex items-center">
+              <i class="fa fa-code mr-1"></i> 代码
+            </a>
+            <a href="#" class="text-primary hover:text-primary/80 font-medium flex items-center">
+              <i class="fa fa-quote-right mr-1"></i> 引用
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 查看更多按钮 -->
+      <div class="text-center mt-12">
+        <a href="#" class="inline-flex items-center justify-center bg-primary hover:bg-primary/90 text-white font-medium py-3 px-8 rounded-lg shadow-md hover:shadow-lg transition-all hover-lift">
+          查看更多论文 <i class="fa fa-arrow-right ml-2"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 教学工作 -->
+  <section id="teaching" class="py-16 md:py-24 bg-light">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-dark mb-4">教学工作</h2>
+        <div class="w-24 h-1 bg-primary mx-auto"></div>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- 研究生课程 -->
+        <div class="bg-white rounded-xl shadow-md p-6 hover-lift">
+          <div class="flex items-center mb-6">
+            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
+              <i class="fa fa-graduation-cap text-xl text-primary"></i>
+            </div>
+            <h3 class="text-xl font-bold text-dark">研究生课程</h3>
+          </div>
+          
+          <div class="space-y-6">
+            <div>
+              <h4 class="text-lg font-semibold text-dark mb-2">高级机器学习 (Advanced Machine Learning)</h4>
+              <p class="text-gray-600 mb-3">
+                本课程系统介绍机器学习的理论基础和前沿方法，包括贝叶斯学习、强化学习、深度学习等高级主题。
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="bg-light text-gray-700 px-3 py-1 rounded-full text-sm">春季学期</span>
+                <span class="bg-light text-gray-700 px-3 py-1 rounded-full text-sm">博士/硕士</span>
+                <span class="bg-light text-gray-700 px-3 py-1 rounded-full text-sm">必修</span>
+              </div>
+            </div>
+            
+            <div>
+              <h4 class="text-lg font-semibold text-dark mb-2">人工智能前沿 (Frontiers in Artificial Intelligence)</h4>
+              <p class="text-gray-600 mb-3">
+                本课程聚焦人工智能领域的前沿研究，包括可解释AI、对抗学习、多智能体系统等热点问题。
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="bg-light text-gray-700 px-3 py-1 rounded-full text-sm">秋季学期</span>
+                <span class="bg-light text-gray-700 px-3 py-1 rounded-full text-sm">博士/硕士</span>
+                <span class="bg-light text-gray-700 px-3 py-1 rounded-full text-sm">选修</span>
+              </div>
+            </div>
+            
+            <div>
+              <h4 class="text-lg font-semibold text-dark mb-2">数据挖掘与知识工程 (Data Mining and Knowledge Engineering)</h4>
+              <p class="text-gray-600 mb-3">
+                本课程介绍数据挖掘的基本算法和技术，以及知识表示、推理和融合的理论与方法。
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="bg-light text-gray-700 px-3 py-1 rounded-full text-sm">春季学期</span>
+                <span class="bg-light text-gray-700 px-3 py-1 rounded-full text-sm">硕士</span>
+                <span class="bg-light text-gray-700 px-3 py-1 rounded-full text-sm">必修</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 本科生课程 -->
+        <div class="bg-white rounded-xl shadow-md p-6 hover-lift">
+          <div class="flex items-center mb-6">
+            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
+              <i class="fa fa-book text-xl text-primary"></i>
+            </div>
+            <h3 class="text-xl font-bold text-dark">本科生课程</h3>
+          </div>
+          
+          <div class="space-y-6">
+            <div>
+              <h4 class="text-lg font-semibold text-dark mb-2">人工智能导论 (Introduction to Artificial Intelligence)</h4>
+              <p class="text-gray-600 mb-3">
+                本课程系统介绍人工智能的基本概念、方法和应用，包括搜索算法、知识表示、机器学习等基础内容。
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="bg-light text-gray-700 px-3 py-1 rounded-full text-sm">秋季学期</span>
+                <span class="bg-light text-gray-700 px-3 py-1 rounded-full text-sm">本科</span>
+                <span class="bg-light text-gray-700 px-3 py-1 rounded-full text-sm">必修</span>
+              </div>
+            </div>
+            
+            <div>
+              <h4 class="text-lg font-semibold text-dark mb-2">机器学习基础 (Foundations of Machine Learning)</h4>
+              <p class="text-gray-600 mb-3">
+                本课程介绍机器学习的基本概念和算法，包括监督学习、无监督学习、深度学习等基础内容。
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="bg-light text-gray-700 px-3 py-1 rounded-full text-sm">春季学期</span>
+                <span class="bg-light text-gray-700 px-3 py-1 rounded-full text-sm">本科</span>
+                <span class="bg-light text-gray-700 px-3 py-1 rounded-full text-sm">选修</span>
+              </div>
+            </div>
+            
+            <div>
+              <h4 class="text-lg font-semibold text-dark mb-2">数据结构与算法 (Data Structures and Algorithms)</h4>
+              <p class="text-gray-600 mb-3">
+                本课程系统介绍数据结构和算法设计的基本概念和方法，包括排序算法、图算法、动态规划等。
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="bg-light text-gray-700 px-3 py-1 rounded-full text-sm">秋季学期</span>
+                <span class="bg-light text-gray-700 px-3 py-1 rounded-full text-sm">本科</span>
+                <span class="bg-light text-gray-700 px-3 py-1 rounded-full text-sm">必修</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 教学成果 -->
+      <div class="mt-20">
+        <h3 class="text-2xl font-bold text-dark mb-8 text-center">教学成果</h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-white rounded-xl shadow-md p-6 text-center hover-lift">
+            <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i class="fa fa-trophy text-2xl text-primary"></i>
+            </div>
+            <h4 class="text-xl font-bold text-dark mb-2">国家级教学成果奖</h4>
+            <p class="text-gray-600">
+              2020年，"人工智能创新人才培养模式探索与实践"获国家级教学成果二等奖
+            </p>
+          </div>
+          
+          <div class="bg-white rounded-xl shadow-md p-6 text-center hover-lift">
+            <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i class="fa fa-book text-2xl text-primary"></i>
+            </div>
+            <h4 class="text-xl font-bold text-dark mb-2">教材编写</h4>
+            <p class="text-gray-600">
+              《人工智能导论》（清华大学出版社，2018年）
+              《机器学习基础》（高等教育出版社，2021年）
+            </p>
+          </div>
+          
+          <div class="bg-white rounded-xl shadow-md p-6 text-center hover-lift">
+            <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i class="fa fa-users text-2xl text-primary"></i>
+            </div>
+            <h4 class="text-xl font-bold text-dark mb-2">优秀学生指导</h4>
+            <p class="text-gray-600">
+              指导学生获ACM国际大学生程序设计竞赛全球总决赛银奖2次，铜奖3次
+            </p>
+          </div>
+          
+          <div class="bg-white rounded-xl shadow-md p-6 text-center hover-lift">
+            <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i class="fa fa-graduation-cap text-2xl text-primary"></i>
+            </div>
+            <h4 class="text-xl font-bold text-dark mb-2">教学奖项</h4>
+            <p class="text-gray-600">
+              2019年，获教育部"高等学校教学名师奖"
+              2017年，获北京大学"十佳教师"称号
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 学生情况 -->
+  <section id="students" class="py-16 md:py-24 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-dark mb-4">学生情况</h2>
+        <div class="w-24 h-1 bg-primary mx-auto"></div>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- 博士生 -->
+        <div class="bg-light rounded-xl shadow-md p-6 hover-lift">
+          <div class="flex items-center mb-6">
+            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
+              <i class="fa fa-user-md text-xl text-primary"></i>
+            </div>
+            <h3 class="text-xl font-bold text-dark">在读博士生</h3>
+          </div>
+          
+          <div class="space-y-6">
+            <div class="flex">
+              <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                <img src="https://picsum.photos/100/100?random=10" alt="博士生照片" class="w-full h-full object-cover">
+              </div>
+              <div>
+                <h4 class="text-lg font-semibold text-dark">李明</h4>
+                <p class="text-gray-600">2020级，人工智能基础理论</p>
+                <div class="flex items-center mt-1">
+                  <a href="#" class="text-primary hover:text-primary/80 mr-3">
+                    <i class="fa fa-envelope-o"></i>
+                  </a>
+                  <a href="#" class="text-primary hover:text-primary/80">
+                    <i class="fa fa-linkedin"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            
+            <div class="flex">
+              <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                <img src="https://picsum.photos/100/100?random=11" alt="博士生照片" class="w-full h-full object-cover">
+              </div>
+              <div>
+                <h4 class="text-lg font-semibold text-dark">王芳</h4>
+                <p class="text-gray-600">2021级，数据挖掘与知识工程</p>
+                <div class="flex items-center mt-1">
+                  <a href="#" class="text-primary hover:text-primary/80 mr-3">
+                    <i class="fa fa-envelope-o"></i>
+                  </a>
+                  <a href="#" class="text-primary hover:text-primary/80">
+                    <i class="fa fa-linkedin"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            
+            <div class="flex">
+              <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                <img src="https://picsum.photos/100/100?random=12" alt="博士生照片" class="w-full h-full object-cover">
+              </div>
+              <div>
+                <h4 class="text-lg font-semibold text-dark">张伟</h4>
+                <p class="text-gray-600">2022级，人工智能应用</p>
+                <div class="flex items-center mt-1">
+                  <a href="#" class="text-primary hover:text-primary/80 mr-3">
+                    <i class="fa fa-envelope-o"></i>
+                  </a>
+                  <a href="#" class="text-primary hover:text-primary/80">
+                    <i class="fa fa-linkedin"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            
+            <a href="#" class="text-primary hover:text-primary/80 font-medium flex items-center justify-center mt-6">
+              查看更多 <i class="fa fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- 硕士生 -->
+        <div class="bg-light rounded-xl shadow-md p-6 hover-lift">
+          <div class="flex items-center mb-6">
+            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
+              <i class="fa fa-user text-xl text-primary"></i>
+            </div>
+            <h3 class="text-xl font-bold text-dark">在读硕士生</h3>
+          </div>
+          
+          <div class="space-y-6">
+            <div class="flex">
+              <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                <img src="https://picsum.photos/100/100?random=13" alt="硕士生照片" class="w-full h-full object-cover">
+              </div>
+              <div>
+                <h4 class="text-lg font-semibold text-dark">刘芳</h4>
+                <p class="text-gray-600">2021级，人工智能基础理论</p>
+                <div class="flex items-center mt-1">
+                  <a href="#" class="text-primary hover:text-primary/80 mr-3">
+                    <i class="fa fa-envelope-o"></i>
+                  </a>
+                  <a href="#" class="text-primary hover:text-primary/80">
+                    <i class="fa fa-linkedin"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            
+            <div class="flex">
+              <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                <img src="https://picsum.photos/100/100?random=14" alt="硕士生照片" class="w-full h-full object-cover">
+              </div>
+              <div>
+                <h4 class="text-lg font-semibold text-dark">陈强</h4>
+                <p class="text-gray-600">2021级，数据挖掘与知识工程</p>
+                <div class="flex items-center mt-1">
+                  <a href="#" class="text-primary hover:text-primary/80 mr-3">
+                    <i class="fa fa-envelope-o"></i>
+                  </a>
+                  <a href="#" class="text-primary hover:text-primary/80">
+                    <i class="fa fa-linkedin"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            
+            <div class="flex">
+              <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                <img src="https://picsum.photos/100/100?random=15" alt="硕士生照片" class="w-full h-full object-cover">
+              </div>
+              <div>
+                <h4 class="text-lg font-semibold text-dark">赵琳</h4>
+                <p class="text-gray-600">2022级，人工智能应用</p>
+                <div class="flex items-center mt-1">
+                  <a href="#" class="text-primary hover:text-primary/80 mr-3">
+                    <i class="fa fa-envelope-o"></i>
+                  </a>
+                  <a href="#" class="text-primary hover:text-primary/80">
+                    <i class="fa fa-linkedin"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            
+            <a href="#" class="text-primary hover:text-primary/80 font-medium flex items-center justify-center mt-6">
+              查看更多 <i class="fa fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- 毕业学生去向 -->
+        <div class="bg-light rounded-xl shadow-md p-6 hover-lift">
+          <div class="flex items-center mb-6">
+            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
+              <i class="fa fa-rocket text-xl text-primary"></i>
+            </div>
+            <h3 class="text-xl font-bold text-dark">毕业学生去向</h3>
+          </div>
+          
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="text-gray-700">高校任教</span>
+              <div class="w-2/3 bg-gray-200 rounded-full h-2.5">
+                <div class="bg-primary h-2.5 rounded-full" style="width: 35%"></div>
+              </div>
+              <span class="text-primary font-medium">35%</span>
+            </div>
+            
+            <div class="flex items-center justify-between">
+              <span class="text-gray-700">科研机构</span>
+              <div class="w-2/3 bg-gray-200 rounded-full h-2.5">
+                <div class="bg-primary h-2.5 rounded-full" style="width: 25%"></div>
+              </div>
+              <span class="text-primary font-medium">25%</span>
+            </div>
+            
+            <div class="flex items-center justify-between">
+              <span class="text-gray-700">科技企业</span>
+              <div class="w-2/3 bg-gray-200 rounded-full h-2.5">
+                <div class="bg-primary h-2.5 rounded-full" style="width: 40%"></div>
+              </div>
+              <span class="text-primary font-medium">40%</span>
+            </div>
+            
+            <div class="mt-6">
+              <h4 class="text-lg font-semibold text-dark mb-3">部分毕业学生去向</h4>
+              <ul class="space-y-2">
+                <li class="flex items-start">
+                  <i class="fa fa-check text-primary mt-1 mr-2"></i>
+                  <span class="text-gray-700">李博士 (2019) - 清华大学计算机系助理教授</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fa fa-check text-primary mt-1 mr-2"></i>
+                  <span class="text-gray-700">王博士 (2020) - 微软研究院高级研究员</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fa fa-check text-primary mt-1 mr-2"></i>
+                  <span class="text-gray-700">张博士 (2021) - Google Brain 研究员</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fa fa-check text-primary mt-1 mr-2"></i>
+                  <span class="text-gray-700">刘硕士 (2020) - 阿里巴巴达摩院算法专家</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fa fa-check text-primary mt-1 mr-2"></i>
+                  <span class="text-gray-700">陈硕士 (2021) - 腾讯AI Lab高级研究员</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 招生信息 -->
+      <div class="mt-20 bg-primary/5 rounded-2xl p-8 md:p-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+          <div class="md:col-span-2">
+            <h3 class="text-2xl font-bold text-dark mb-4">招生信息</h3>
+            <p class="text-gray-700 mb-6">
+              欢迎对人工智能、机器学习、数据挖掘等领域有浓厚兴趣的同学报考我的研究生。我每年招收2-3名博士生和3-5名硕士生，同时接受优秀本科生参与科研项目。
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <h4 class="text-lg font-semibold text-dark mb-2">申请要求</h4>
+                <ul class="space-y-2">
+                  <li class="flex items-start">
+                    <i class="fa fa-check text-primary mt-1 mr-2"></i>
+                    <span class="text-gray-700">计算机科学、数学、统计学等相关专业</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fa fa-check text-primary mt-1 mr-2"></i>
+                    <span class="text-gray-700">扎实的数学基础（线性代数、概率论、数理统计）</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fa fa-check text-primary mt-1 mr-2"></i>
+                    <span class="text-gray-700">良好的编程能力（Python、Java等）</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fa fa-check text-primary mt-1 mr-2"></i>
+                    <span class="text-gray-700">对科研有强烈兴趣和创新精神</span>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="text-lg font-semibold text-dark mb-2">联系方式</h4>
+                <ul class="space-y-2">
+                  <li class="flex items-start">
+                    <i class="fa fa-envelope-o text-primary mt-1 mr-2"></i>
+                    <span class="text-gray-700">zhang@example.edu.cn</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fa fa-phone text-primary mt-1 mr-2"></i>
+                    <span class="text-gray-700">+86 10 6275 1234</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fa fa-map-marker text-primary mt-1 mr-2"></i>
+                    <span class="text-gray-700">北京大学理科楼12层1205室</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fa fa-clock-o text-primary mt-1 mr-2"></i>
+                    <span class="text-gray-700">每周一、三上午9:00-11:00开放讨论时间</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="text-center">
+            <img src="https://picsum.photos/400/400?random=20" alt="实验室照片" class="w-full h-auto rounded-xl shadow-lg">
+            <p class="text-gray-600 mt-4">
+              我的研究团队合影
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 联系方式 -->
+  <section id="contact" class="py-16 md:py-24 bg-light">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-dark mb-4">联系方式</h2>
+        <div class="w-24 h-1 bg-primary mx-auto"></div>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div>
+          <h3 class="text-xl font-bold text-dark mb-6">联系信息</h3>
+          
+          <div class="space-y-6">
+            <div class="flex items-start">
+              <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                <i class="fa fa-map-marker text-xl text-primary"></i>
+              </div>
+              <div>
+                <h4 class="text-lg font-semibold text-dark mb-1">办公地址</h4>
+                <p class="text-gray-600">
+                  北京市海淀区颐和园路5号<br>
+                  北京大学理科楼12层1205室<br>
+                  邮编: 100871
+                </p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                <i class="fa fa-envelope-o text-xl text-primary"></i>
+              </div>
+              <div>
+                <h4 class="text-lg font-semibold text-dark mb-1">电子邮箱</h4>
+                <p class="text-gray-600">
+                  zhang@example.edu.cn<br>
+                  zhangj@example.com
+                </p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                <i class="fa fa-phone text-xl text-primary"></i>
+              </div>
+              <div>
+                <h4 class="text-lg font-semibold text-dark mb-1">联系电话</h4>
+                <p class="text-gray-600">
+                  办公室: +86 10 6275 1234<br>
+                  实验室: +86 10 6275 1235
+                </p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                <i class="fa fa-clock-o text-xl text-primary"></i>
+              </div>
+              <div>
+                <h4 class="text-lg font-semibold text-dark mb-1">开放时间</h4>
+                <p class="text-gray-600">
+                  每周一、三上午9:00-11:00<br>
+                  如需预约，请提前发送邮件
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mt-10">
+            <h4 class="text-lg font-semibold text-dark mb-4">社交媒体</h4>
+            <div class="flex space-x-4">
+              <a href="#" class="w-12 h-12 bg-primary/10 hover:bg-primary/20 rounded-full flex items-center justify-center text-primary transition-colors">
+                <i class="fa fa-linkedin text-xl"></i>
+              </a>
+              <a href="#" class="w-12 h-12 bg-primary/10 hover:bg-primary/20 rounded-full flex items-center justify-center text-primary transition-colors">
+                <i class="fa fa-twitter text-xl"></i>
+              </a>
+              <a href="#" class="w-12 h-12 bg-primary/10 hover:bg-primary/20 rounded-full flex items-center justify-center text-primary transition-colors">
+                <i class="fa fa-google-plus text-xl"></i>
+              </a>
+              <a href="#" class="w-12 h-12 bg-primary/10 hover:bg-primary/20 rounded-full flex items-center justify-center text-primary transition-colors">
+                <i class="fa fa-researchgate text-xl"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="text-xl font-bold text-dark mb-6">发送消息</h3>
+          
+          <form class="space-y-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <label for="name" class="block text-gray-700 font-medium mb-2">姓名</label>
+                <input type="text" id="name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-colors" placeholder="您的姓名">
+              </div>
+              <div>
+                <label for="email" class="block text-gray-700 font-medium mb-2">邮箱</label>
+                <input type="email" id="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-colors" placeholder="您的邮箱">
+              </div>
+            </div>
+            
+            <div>
+              <label for="subject" class="block text-gray-700 font-medium mb-2">主题</label>
+              <input type="text" id="subject" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-colors" placeholder="消息主题">
+            </div>
+            
+            <div>
+              <label for="message" class="block text-gray-700 font-medium mb-2">消息内容</label>
+              <textarea id="message" rows="6" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-colors" placeholder="请输入您的消息内容..."></textarea>
+            </div>
+            
+            <button type="submit" class="w-full bg-primary hover:bg-primary/90 text-white font-medium py-3 px-6 rounded-lg shadow-md hover:shadow-lg transition-all hover-lift">
+              发送消息 <i class="fa fa-paper-plane-o ml-2"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+      
+      <!-- 地图 -->
+      <div class="mt-20">
+        <h3 class="text-xl font-bold text-dark mb-6 text-center">实验室位置</h3>
+        <div class="rounded-xl overflow-hidden shadow-lg h-80 bg-gray-200">
+          <!-- 这里可以替换为实际的地图 -->
+          <img src="https://picsum.photos/1200/400?random=30" alt="实验室位置地图" class="w-full h-full object-cover">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="bg-dark text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-xl font-bold mb-6">关于我</h3>
+          <p class="text-gray-400 mb-6">
+            计算机科学与技术学院教授，博士生导师，主要研究方向包括人工智能、机器学习、数据挖掘与知识工程。
+          </p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+              <i class="fa fa-linkedin"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+              <i class="fa fa-twitter"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+              <i class="fa fa-google-plus"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+              <i class="fa fa-researchgate"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="text-xl font-bold mb-6">快速链接</h3>
+          <ul class="space-y-3">
+            <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">关于我</a></li>
+            <li><a href="#research" class="text-gray-400 hover:text-white transition-colors">研究方向</a></li>
+            <li><a href="#publications" class="text-gray-400 hover:text-white transition-colors">发表论文</a></li>
+            <li><a href="#teaching" class="text-gray-400 hover:text-white transition-colors">教学工作</a></li>
+            <li><a href="#students" class="text-gray-400 hover:text-white transition-colors">学生情况</a></li>
+            <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">联系方式</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-xl font-bold mb-6">研究方向</h3>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">人工智能基础理论</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">数据挖掘与知识工程</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">人工智能应用</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">可解释人工智能</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">多模态学习</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">医疗健康人工智能</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-xl font-bold mb-6">联系信息</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start">
+              <i class="fa fa-map-marker text-primary mt-1 mr-2"></i>
+              <span class="text-gray-400">北京大学理科楼12层1205室</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fa fa-envelope-o text-primary mt-1 mr-2"></i>
+              <span class="text-gray-400">zhang@example.edu.cn</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fa fa-phone text-primary mt-1 mr-2"></i>
+              <span class="text-gray-400">+86 10 6275 1234</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fa fa-clock-o text-primary mt-1 mr-2"></i>
+              <span class="text-gray-400">每周一、三上午9:00-11:00</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-800 mt-12 pt-8 text-center">
+        <p class="text-gray-500">
+          &copy; 2023 张教授个人主页 | 设计与开发
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 返回顶部按钮 -->
+  <button id="back-to-top" class="fixed bottom-8 right-8 bg-primary hover:bg-primary/90 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-300 z-50">
+    <i class="fa fa-arrow-up"></i>
+  </button>
+
+  <script>
+    // 导航栏滚动效果
+    const navbar = document.getElementById('navbar');
+    const backToTop = document.getElementById('back-to-top');
+    
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 50) {
+        navbar.classList.add('py-2', 'shadow-md');
+        navbar.classList.remove('py-3', 'shadow-sm');
+        
+        backToTop.classList.remove('opacity-0', 'invisible');
+        backToTop.classList.add('opacity-100', 'visible');
+      } else {
+        navbar.classList.add('py-3', 'shadow-sm');
+        navbar.classList.remove('py-2', 'shadow-md');
+        
+        backToTop.classList.add('opacity-0', 'invisible');
+        backToTop.classList.remove('opacity-100', 'visible');
+      }
+    });
+    
+    // 移动端菜单切换
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    menuToggle.addEventListener('click', function() {
+      mobileMenu.classList.toggle('hidden');
+    });
+    
+    // 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+          
+          // 关闭移动端菜单
+          if (!mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+          }
+        }
+      });
+    });
+    
+    // 返回顶部按钮
+    backToTop.addEventListener('click', function() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+        behavior: 'smooth'
+      });
+    });
+  </script>
+</body>
+</html>
